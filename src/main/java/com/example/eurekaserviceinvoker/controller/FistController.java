@@ -17,6 +17,19 @@ public class FistController {
         return user;
     }
 
+    /**
+     * 测试Feign使用Hystrix提供一个getuser方法
+     */
+    @RequestMapping("/getuser/{userId}")
+    public User getUser(@PathVariable("userId") Integer id, HttpServletRequest request){
+        User user = new User();
+        user.setId(id);
+        user.setUsername("root");
+        user.setPassword("123");
+        user.setMessage(request.getRequestURL().toString());
+        return user;
+    }
+
     @RequestMapping("/hello")
     public String hello(){
         return "Hello Ribbon !";
